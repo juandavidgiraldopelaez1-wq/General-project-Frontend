@@ -2,6 +2,11 @@ import { useTextos } from "./hooks/useTextos.js";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { useEffect, useState } from "react";
+import ContadorClics from "./components/ContadorClics";
+import Cronometro from "./components/Cronometro";
+import RecordarNombre from "./components/RecordarNombre";
+import PersonajeApi from "./components/PersonajeApi";
+import NavegadorPersonajes from "./components/NavegadorPersonajes";
 
 function leerSeccion() {
   return window.location.hash.slice(1) || "inicio";
@@ -50,35 +55,43 @@ function App() {
     window.history.replaceState(null, "", "#heroes");
   }
 
-  return (
+return (
     <>
-      <Navbar
-        {...datos}
-        idioma={idioma}
-        cambiarIdioma={setIdioma}
-        activo={activo}
-        onBuscar={buscar}
-        texto={textoGrande}
-        alternarTexto={() => setTextoGrande((valor) => !valor)}
-      />
-      <main className="contenedor demo-contenido"></main>
-      <p>{ingles ? "English content" : "Contenido en español"}</p>
-      <h1>{titulo ?? (ingles ? "Navigation" : "Navegación")}</h1>
-      <p role="status">
-        {consulta
-          ? `${ingles ? "Search submitted" : "Búsqueda envidada"}: ${consulta}`
-          : ingles
-            ? "Select a link"
-            : "Selecciona un enlace"}
-      </p>
-      <p>
-        {" "}
-        {ingles
-          ? "This example loads navigation abels from the API"
-          : "Este ejemplo carga los textos del menú desde la API"}
-      </p>
+        {/*
+        <Navbar
+            {...datos}
+            idioma={idioma}
+            cambiarIdioma={setIdioma}
+            activo={activo}
+            onBuscar={buscar}
+            texto={textoGrande}
+            alternarTexto={() => setTextoGrande((valor) => !valor)}
+        />
+        <main className="contenedor demo-contenido"></main>
+        <p>{ingles ? "English content" : "Contenido en español"}</p>
+        <h1>{titulo ?? (ingles ? "Navigation" : "Navegación")}</h1>
+        <p role="status">
+            {consulta
+                ? `${ingles ? "Search submitted" : "Búsqueda enviada"}: ${consulta}`
+                : ingles
+                    ? "Select a link"
+                    : "Selecciona un enlace"}
+        </p>
+        <p>
+            {" "}
+            {ingles
+                ? "This example loads navigation labels from the API"
+                : "Este ejemplo carga los textos del menú desde la API"}
+        </p>
+        */}
+        <ContadorClics />
+        <Cronometro />
+        <RecordarNombre />
+        <PersonajeApi />
+        <NavegadorPersonajes />
     </>
-  );
+        
+);
 }
 
 export default App;
